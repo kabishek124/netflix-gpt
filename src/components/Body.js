@@ -1,14 +1,47 @@
-import React from "react";
-import Header from "./Header";
+import React, { useEffect } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Browse from "./Browse";
+import Login from "./Login";
+import { onAuthStateChanged } from "firebase/auth";
+import { addUser, removeUser } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
+import { auth } from "../utils/firebase";
 
 const Body = () => {
+  const dispatch = useDispatch();
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Login />,
+    },
+    {
+      path: "/browse",
+      element: <Browse />,
+    },
+  ]);
+
+  //Triggering the stores to handle the users sign in/ sing out event
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+      } else {
+        dispatch(removeUser());
+      }
+    });
+  }, []);
+
   return (
-    <div>
-      <Header />
-      <div>
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/9f46b569-aff7-4975-9b8e-3212e4637f16/453ba2a1-6138-4e3c-9a06-b66f9a2832e4/IN-en-20240415-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-        alt="bg image"/>
-      </div>
+    <div className="">
+      <RouterProvider router={appRouter} />
     </div>
   );
 };

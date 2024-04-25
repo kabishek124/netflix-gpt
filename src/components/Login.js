@@ -1,13 +1,90 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
+import validation from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignUpForm, setSignUpForm] = useState(false);
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
+  const [validateMessage, setValidateMessage] = useState();
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const email = useRef(null);
+  const password = useRef(null);
+  const name = useRef(null);
 
   //function to handle the sign up / sign in
   const handleSignUpForm = () => {
     setSignUpForm(!isSignUpForm);
+  };
+
+  //function to validate the form
+  const handleFormValidation = () => {
+    //validation();
+    const data = validation(email.current.value, password.current.value);
+
+    if (data === null) {
+      //Sign in the user using firebase api method
+      if (!isSignUpForm) {
+        signInWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+            navigate("/browse");
+          })
+          .catch((error) => {
+            setValidateMessage(error.code + " " + error.message);
+          });
+      } else {
+        //Create the user
+        createUserWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        )
+          .then((userCredential) => {
+            const user = userCredential.user;
+            updateProfile(user, {
+              displayName: name.current.value,
+              photoURL: "https://avatars.githubusercontent.com/u/129862100?v=4",
+            })
+              .then(() => {
+                const { uid, email, displayName, photoURL } = auth.currentUser;
+                dispatch(
+                  addUser({
+                    uid: uid,
+                    email: email,
+                    displayName: displayName,
+                    photoURL: photoURL,
+                  })
+                );
+                navigate("/browse");
+              })
+              .catch((error) => {
+                setValidateMessage(error.message);
+              });
+          })
+          .catch((error) => {
+            setValidateMessage(error.code + " " + error.message);
+          });
+      }
+    } else {
+      setValidateMessage(data);
+    }
   };
 
   return (
@@ -19,45 +96,56 @@ const Login = () => {
           alt="bg image"
         />
       </div>
-      <form className="w-3/12 absolute p-12 my-36 mx-auto right-0 left-0 bg-black text-white bg-opacity-80">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="w-3/12 absolute p-12 my-36 mx-auto right-0 left-0 bg-black text-white bg-opacity-80"
+      >
         <h1 className="font-bold text-3xl py-4">
           {isSignUpForm ? "Sign up" : "Sign in "}
         </h1>
         {isSignUpForm && (
           <input
+            ref={name}
             className="p-4 my-4 w-full bg-gray-700"
             type="text"
             placeholder="Enter the name"
           />
         )}
         <input
+          ref={email}
           className="p-4 my-4 w-full bg-gray-700"
           type="text"
           placeholder="Enter the email"
         />
         <input
+          ref={password}
           className="p-4 my-4 w-full bg-gray-700"
           type="password"
           placeholder="Enter the password"
         />
-        <button className="p-4 my-6 bg-red-600 w-full rounded-lg">
+        <p>{validateMessage}</p>
+        <button
+          className="p-4 my-6 bg-red-600 w-full rounded-lg"
+          onClick={handleFormValidation}
+          type="submit"
+        >
           {isSignUpForm ? "Sign up" : "sign in"}
         </button>
         <div className="flex">
-          <a className="mr-1 text-gray-500 text-base">
+          <a className="mr-1 text-gray-500 text-base ">
             {!isSignUpForm
               ? "Didn't have account?"
               : "Already have an account?"}
           </a>
           <p
             onClick={handleSignUpForm}
-            className="cursor-pointer relative text-base text-white hover:underline"
+            className="cursor-pointer relative   text-base text-white hover:underline"
           >
             {!isSignUpForm ? "Sign up here" : "Sign in here"}
           </p>
         </div>
         <div className="relative">
-          <p className="mt-5 text-sm text-gray-500">
+          <p className="mt-5 text-sm text-gray-500 antialiased">
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot.
           </p>
