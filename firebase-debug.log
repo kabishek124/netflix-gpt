@@ -1,0 +1,73 @@
+[debug] [2024-04-26T10:02:37.766Z] ----------------------------------------------------------------------
+[debug] [2024-04-26T10:02:37.769Z] Command:       /home/int20091/.nvm/versions/node/v18.20.2/bin/node /home/int20091/.nvm/versions/node/v18.20.2/bin/firebase init
+[debug] [2024-04-26T10:02:37.770Z] CLI Version:   13.7.4
+[debug] [2024-04-26T10:02:37.771Z] Platform:      linux
+[debug] [2024-04-26T10:02:37.771Z] Node Version:  v18.20.2
+[debug] [2024-04-26T10:02:37.771Z] Time:          Fri Apr 26 2024 15:32:37 GMT+0530 (India Standard Time)
+[debug] [2024-04-26T10:02:37.772Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-26T10:02:37.852Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-26T10:02:37.853Z] > authorizing via signed-in user (jcoyavkshek@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/int20091/netflix-gpt
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-04-26T10:02:52.233Z] Using project from CLI flag: abishekflix
+[debug] [2024-04-26T10:02:52.241Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/abishekflix [none]
+[debug] [2024-04-26T10:02:53.600Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/abishekflix 200
+[debug] [2024-04-26T10:02:53.600Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/abishekflix {"projectId":"abishekflix","projectNumber":"149246299970","displayName":"AbishekFlix","name":"projects/abishekflix","resources":{"hostingSite":"abishekflix"},"state":"ACTIVE","etag":"1_08188fd2-6edb-4c8c-a908-4cd570f51e24"}
+[info] i  Using project abishekflix (AbishekFlix) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2024-04-26T10:02:53.655Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com [none]
+[debug] [2024-04-26T10:02:53.655Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com x-goog-quota-user=projects/abishekflix
+[debug] [2024-04-26T10:02:55.612Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com 200
+[debug] [2024-04-26T10:02:55.613Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com [omitted]
+[warn] ⚠  database: missing required API firebasedatabase.googleapis.com. Enabling now... 
+[debug] [2024-04-26T10:02:55.615Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com:enable [none]
+[debug] [2024-04-26T10:02:55.615Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com:enable x-goog-quota-user=projects/abishekflix
+[debug] [2024-04-26T10:02:57.797Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com:enable 200
+[debug] [2024-04-26T10:02:57.797Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com:enable [omitted]
+[debug] [2024-04-26T10:03:07.809Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com [none]
+[debug] [2024-04-26T10:03:07.810Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com x-goog-quota-user=projects/abishekflix
+[debug] [2024-04-26T10:03:09.446Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com 200
+[debug] [2024-04-26T10:03:09.447Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/abishekflix/services/firebasedatabase.googleapis.com [omitted]
+[info] ✔  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2024-04-26T10:03:09.451Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/abishekflix [none]
+[debug] [2024-04-26T10:03:09.874Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/abishekflix 200
+[debug] [2024-04-26T10:03:09.874Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/abishekflix {"projectId":"abishekflix","projectNumber":"149246299970","displayName":"AbishekFlix","name":"projects/abishekflix","resources":{"hostingSite":"abishekflix"},"state":"ACTIVE","etag":"1_08188fd2-6edb-4c8c-a908-4cd570f51e24"}
+[info] 
+[info] Firebase Realtime Database Security Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2024-04-26T10:03:26.677Z] Error: EISDIR: illegal operation on a directory, open '/home/int20091/netflix-gpt/build'
+    at Object.openSync (node:fs:596:3)
+    at Object.writeFileSync (node:fs:2322:35)
+    at Object.createFileSync (/home/int20091/.nvm/versions/node/v18.20.2/lib/node_modules/firebase-tools/node_modules/fs-extra/lib/ensure/file.js:63:6)
+    at Config.writeProjectFile (/home/int20091/.nvm/versions/node/v18.20.2/lib/node_modules/firebase-tools/lib/config.js:154:12)
+    at writeDBRules (/home/int20091/.nvm/versions/node/v18.20.2/lib/node_modules/firebase-tools/lib/init/features/database.js:34:12)
+    at doSetup (/home/int20091/.nvm/versions/node/v18.20.2/lib/node_modules/firebase-tools/lib/init/features/database.js:127:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async init (/home/int20091/.nvm/versions/node/v18.20.2/lib/node_modules/firebase-tools/lib/init/index.js:37:9)
+[error] 
+[error] Error: An unexpected error has occurred.
