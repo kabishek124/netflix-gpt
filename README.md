@@ -84,3 +84,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -Netflix gpt
     -Search bar for suggesting a movie
     -Movie suggestions
+
+
