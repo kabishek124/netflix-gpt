@@ -5,6 +5,10 @@ import { auth } from "../utils/firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/stores/userSlice";
 import { LOGO } from "../utils/constants";
+import {
+  removeMovieTrailer,
+  removeNowPlayingMovies,
+} from "../utils/stores/movieSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -28,6 +32,8 @@ const Header = () => {
         navigate("/browse");
       } else {
         dispatch(removeUser());
+        dispatch(removeMovieTrailer());
+        dispatch(removeNowPlayingMovies());
         navigate("/");
       }
     });

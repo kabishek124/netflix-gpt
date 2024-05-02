@@ -2,6 +2,14 @@ const movies = {
     NOWPLAYING : "movie/now_playing",
     POPULAR : "movie/popular",
     TOPRATED : "movie/top_rated",
-    UPCOMING : "upcoming"
+    UPCOMING : "movie/upcoming",
+    VIDEOS : "movie/:id/videos"
 }
-export {movies};
+
+const series = {
+    AIRING : "tv/airing_today",
+    POPULAR : "tv/popular",
+    TOPRATED : "tv/top_rated",
+    ONTV : "tv/on_the_air"
+}
+export {movies, series};

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const baseURL = "https://api.themoviedb.org/3/";
 
@@ -8,6 +8,7 @@ const apiKey =
 const apiService = {
   get: async (url) => {
     try {
+      // console.log("In api service" + " " + url)
       const response = await axios.get(baseURL + url, {
         headers: {
           accept: "application/json",
@@ -16,9 +17,7 @@ const apiService = {
       });
       //console.log("In api service" + " " + response.headers)
       return response.data;
-    } catch (error) {
-    
-    }
+    } catch (error) {}
   },
 };
 
