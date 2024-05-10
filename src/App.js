@@ -1,7 +1,7 @@
 import "./App.css";
 import Body from "./components/Body";
 import { Provider } from "react-redux";
-import appStore from "./utils/stores/appStore";
+import appStore from "./utils/Stores/appStore";
 
 function App() {
   return (

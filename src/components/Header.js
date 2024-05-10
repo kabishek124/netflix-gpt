@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { useSelector, useDispatch } from "react-redux";
-import { addUser, removeUser } from "../utils/stores/userSlice";
+import { addUser, removeUser } from "../utils/Stores/userSlice";
 import { LOGO } from "../utils/Constants/constants";
 import {
   removeMovieTrailer,
@@ -11,13 +11,13 @@ import {
   removePopularMovies,
   removeTopRatedMovies,
   removeUpcomingMovies,
-} from "../utils/stores/movieSlice";
+} from "../utils/Stores/movieSlice";
 import {
   removeAiringSeries,
   removeOnTheAirSeries,
   removePopularSeries,
   removeTopRatedSeries,
-} from "../utils/stores/seriesSlice";
+} from "../utils/Stores/seriesSlice";
 import { disablePersistentCacheIndexAutoCreation } from "firebase/firestore";
 
 const Header = () => {

@@ -9,7 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/stores/userSlice";
+import { addUser } from "../utils/Stores/userSlice";
 import { BGIMAGE, PHOTOURL } from "../utils/Constants/constants";
 
 const Login = () => {

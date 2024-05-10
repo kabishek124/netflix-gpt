@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import movieService from "../utils/services/movieService";
+import movieService from "../utils/Services/movieService";
 import { useDispatch, useSelector } from "react-redux";
-import { addMovieTrailer } from "../utils/stores/movieSlice";
+import { addMovieTrailer } from "../utils/Stores/movieSlice";
 
 const VideoTrailer = ({ movieId }) => {
   const dispatch = useDispatch();
