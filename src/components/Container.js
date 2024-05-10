@@ -19,7 +19,7 @@ const Container = () => {
   const { title, overview, id } = movies[randomMovie];
 
   return (
-    <div>
+    <div className="">
       <VideoTrailer movieId={id} />
       <VideoInfo title={title} overview={overview} />
     </div>

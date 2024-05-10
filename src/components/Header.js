@@ -4,11 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/stores/userSlice";
-import { LOGO } from "../utils/constants";
+import { LOGO } from "../utils/Constants/constants";
 import {
   removeMovieTrailer,
   removeNowPlayingMovies,
+  removePopularMovies,
+  removeTopRatedMovies,
+  removeUpcomingMovies,
 } from "../utils/stores/movieSlice";
+import {
+  removeAiringSeries,
+  removeOnTheAirSeries,
+  removePopularSeries,
+  removeTopRatedSeries,
+} from "../utils/stores/seriesSlice";
+import { disablePersistentCacheIndexAutoCreation } from "firebase/firestore";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -34,6 +44,13 @@ const Header = () => {
         dispatch(removeUser());
         dispatch(removeMovieTrailer());
         dispatch(removeNowPlayingMovies());
+        dispatch(removePopularMovies());
+        dispatch(removeTopRatedMovies());
+        dispatch(removeUpcomingMovies());
+        dispatch(removeAiringSeries());
+        dispatch(removeOnTheAirSeries());
+        dispatch(removeTopRatedSeries());
+        dispatch(removePopularSeries());
         navigate("/");
       }
     });

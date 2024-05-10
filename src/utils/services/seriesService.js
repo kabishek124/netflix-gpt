@@ -12,7 +12,7 @@ const seriesService = {
   },
   getOnTheAirSeries: async () => {
     try {
-      const response = await apiService.get(series.ON_THE_AIR);
+      const response = await apiService.get(series.ONTV);
       return response;
     } catch (error) {
       throw error;
@@ -28,7 +28,7 @@ const seriesService = {
   },
   getTopRatedSeries: async () => {
     try {
-      const response = await apiService.get(series.TOP_RATED);
+      const response = await apiService.get(series.TOPRATED);
       return response;
     } catch (error) {
       throw error;
