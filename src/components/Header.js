@@ -19,10 +19,13 @@ import {
   removeTopRatedSeries,
 } from "../utils/Stores/seriesSlice";
 import { disablePersistentCacheIndexAutoCreation } from "firebase/firestore";
+import { isToggled } from "../utils/Stores/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const showGptSearch = useSelector((store) => store.gpt.searchButton);
 
   const user = useSelector((store) => store.user);
 
@@ -57,6 +60,10 @@ const Header = () => {
     return () => unSuscribe();
   }, []);
 
+  const handleButtonClick = () => {
+    dispatch(isToggled());
+    //console.log("ki");
+  };
   const handleSignOut = () => {
     signOut(auth).then(() => {
       navigate("/");
@@ -68,7 +75,18 @@ const Header = () => {
       <img className="w-44" src={LOGO} alt="logo" />
       {user && (
         <div className="flex p-2">
-          <img src={user?.photoURL} alt="usericon" className="w-12 h-12" />
+          <button
+            className="text-white bg-purple-800 mr-4 rounded-lg px-2 py-0 h-12"
+            onClick={handleButtonClick}
+            autoFocus="autofocus"
+          >
+            {showGptSearch ? "Home Page" : "GPT Search"}
+          </button>
+          <img
+            src={user?.photoURL}
+            alt="usericon"
+            className="w-12 h-12 rounded-lg"
+          />
           <button className="text-white font-bold" onClick={handleSignOut}>
             Sign out
           </button>
