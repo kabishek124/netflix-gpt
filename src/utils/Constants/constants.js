@@ -7,4 +7,20 @@ const BGIMAGE =
 
 const POSTERURL = "https://image.tmdb.org/t/p/w500/";
 
-export { LOGO, PHOTOURL, BGIMAGE, POSTERURL};
+const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "es", name: "Spanish" },
+  { identifier: "fr", name: "French" },
+  { identifier: "de", name: "German" },
+  { identifier: "it", name: "Italian" },
+  { identifier: "pt", name: "Portuguese" },
+  { identifier: "ja", name: "Japanese" },
+  { identifier: "ko", name: "Korean" },
+  { identifier: "zh", name: "Chinese" },
+  { identifier: "ru", name: "Russian" },
+  { identifier: "ar", name: "Arabic" },
+  { identifier: "hi", name: "Hindi" },
+  { identifier: "ta", name: "Tamil" },
+];
+
+export { LOGO, PHOTOURL, BGIMAGE, POSTERURL, SUPPORTED_LANGUAGES };

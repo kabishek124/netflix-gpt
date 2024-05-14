@@ -23,7 +23,6 @@ import GptSearchPage from "./GptSearchPage";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.searchButton);
-  console.log(showGptSearch);
 
   //getting all types of movies to shown in the browse page
   useMovieData();
